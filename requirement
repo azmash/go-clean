@@ -1,0 +1,48 @@
+Upgrade shop to PM
+
+Endpoint: 
+HTTP 
+POST /shop/upgrade
+PARAM
+shop_id 
+
+Requirement:
+Upgrade to PM
+
+PM
+kyc ok
+shop-score 60
+
+PM Pro
+if shop-score > 70 & finishOrder >= 3 & NetIncome >= 350000 {
+	PM Pro
+}
+
+
+Delivery
+// validate shop_id is not null
+
+Usecases
+type Usecase interface {
+	SetPM(ctx context.Context, shopID int64) (newStatus int, err error)
+}
+
+Repository
+type KYC interface { // HTTP
+	CheckKYC(ctx context.Context, shopID int64) (bool, error)
+}
+
+type ShopScore interface { // HTTP
+	GetShopScore(ctx context.Context, shopID int64) (int, error)
+}
+
+type Transaction interface { // HTTP
+	GetTotalOrderAndNIV(ctx context.Context, shopID int64) (int64, int64, error)
+}
+
+
+type ShopClass interface { // HTTP
+	SetClass(ctx context.Context, shopID int64, newStatus int) (error)
+}
+
+type 

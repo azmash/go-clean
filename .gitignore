@@ -1,0 +1,8 @@
+# vendor
+vendor/
+
+# binaries
+go-clean
+
+#config
+etc/config.ini
